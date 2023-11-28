@@ -67,3 +67,25 @@ if __name__ == "__main__":
     proceso_3.join()
 
     print("Procesos completados")
+"""
+¿Qué es lo que ocurre durante la ejecución?
+Cuando ejecutas el programa, se abren tres procesos simultáneamente: uno para abrir el Bloc de notas, 
+otro para cambiar su prioridad y el tercero para intentar el primer proceso. Podria haber problemas si no usamos
+el time sleep para que los procesos funcionen correctamente los usamos.
+
+¿Termina el programa correctamente?
+Si, el programa puede terminar sin problemas si el Bloc de notas se abre a tiempo y los otros 
+procesos pueden interactuar con él. Sin embargo, si hay problemas de sincronización y el Bloc de notas no se 
+abre o no se puede encontrar cuando los otros procesos lo intentan, el programa puede no terminar como se espera y saltar algun error
+ese error se mostraria en pantalla por ejemplo en el proceso 3 con un mensaje "error".
+
+¿Cómo podrías solucionarlo?
+Para asegurarte de que el programa funcione correctamente, podrías ajustar los tiempos de espera para cada paso.
+Por ejemplo, se podria hacer que el proceso de cambiar la prioridad y el de eliminar el Bloc de notas esperen a un 
+resultado booleano si el notepad esta abierto, antes de intentar interactuar con él.
+
+opcional: ¿Qué mecanismo de los estudiados te permitiría sincronizar la muerte de P1?
+Que cada uno espere a que el anterior haya completado su tarea. 
+Por ejemplo, podrías usar una señal para indicar que el Bloc de notas se ha abierto antes de que los otros 
+procesos intenten cambiar su prioridad o eliminarlo. Esto garantizaría que cada paso ocurra en el orden correcto 
+y evite posibles problemas de sincronización."""
