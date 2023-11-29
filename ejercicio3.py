@@ -39,7 +39,6 @@ def cambiar_prioridad():
             print("Nueva prioridad del proceso:", p.nice())
 
 def eliminar_proceso():
-        time.sleep(7)
         for proc in psutil.process_iter():
             try:
                 # Obtener el nombre del proceso
@@ -60,6 +59,8 @@ if __name__ == "__main__":
 
     proceso_1.start()
     proceso_2.start()
+
+    time.sleep(2)
     proceso_3.start()
 
     proceso_1.join()
